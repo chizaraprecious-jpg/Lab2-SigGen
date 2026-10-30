@@ -32,6 +32,6 @@ void vbd_plot(Vsinegen* top, int en) {
     }
 }
 
-int close_vbd() {
+void close_vbd() {
     vbdClose();
 }
