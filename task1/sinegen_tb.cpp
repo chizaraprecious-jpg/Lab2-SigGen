@@ -23,7 +23,6 @@ int main(int argc, char **argv, char **en) {
     //init simulation inputs
     top->clk = 1;
     top->rst = 0;
-    top->incr = 1;
 
     //run simulation for 300 clock cycles
     for (i=0; i<1000000; ++i) {
@@ -31,6 +30,9 @@ int main(int argc, char **argv, char **en) {
         //so i=n indicates the start of the (n+1)th cycle 
 
         top->en = vbdFlag();
+        //rotary encoder sets how much to increment the address
+        //simulates a changing frequency as the full sine wave of values is accessed quicker
+        top->incr = vbdValue();
 
         toggle_clk(top, tfp, i);    //function that dumps variables into VSC file and toggles clock
         vbd_plot(top, top->en);
